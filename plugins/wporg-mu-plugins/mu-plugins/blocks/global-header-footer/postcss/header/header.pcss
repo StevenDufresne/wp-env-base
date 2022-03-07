@@ -1,0 +1,131 @@
+html {
+	--wp-global-header-height: 60px;
+
+	@media (--tablet) {
+		--wp-global-header-height: 90px;
+	}
+
+	@media (--short-screen) {
+		--wp-global-header-height: 60px;
+	}
+}
+
+.wp-block-group.global-header {
+	display: flex;
+	align-items: flex-start;
+	font-size: 21px;
+	height: var(--wp-global-header-height);
+	background: #000;
+
+	/*
+	 * Some themes set a `z-index` on content elements that follow the header, like `#masthead` in
+	 * `wporg-learn-2020`. If the global header doesn't have a higher index, then submenus will be
+	 * covered up by the content when you hover over the parent menu item.
+	 */
+	position: relative;
+	z-index: 250;
+
+	@media (--tablet) {
+		position: fixed;
+		top: var(--wp-admin--admin-bar--height, 0);
+		left: 0;
+		right: 0;
+		font-size: var(--wp--preset--font-size--small);
+		line-height: 24px;
+	}
+
+	& > * {
+		flex-shrink: 0;
+		padding-left: var(--wp--style--block-gap);
+		padding-right: var(--wp--style--block-gap);
+		margin: 0;
+
+		@media (--tablet) {
+			padding-top: 33px;
+			padding-bottom: 33px;
+		}
+	}
+
+	& .global-header__search,
+	& .global-header__navigation {
+		padding: 0;
+
+		& .wp-block-navigation__responsive-container-open {
+
+			/* Magic numbers to center the 24px icon in 60px height. */
+			padding: 18px var(--wp--style--block-gap) 18px;
+
+			@media (--tablet) {
+				padding-top: 37px;
+				padding-bottom: 37px;
+			}
+		}
+	}
+
+	& button {
+		background-color: transparent;
+		border: none;
+	}
+
+	& .global-header__search-container,
+	& .global-header__menu-container {
+		flex-basis: calc(25px + ( var(--wp--style--block-gap) * 2 ));
+		text-align: center;
+	}
+
+	& .global-header__close-search,
+	& .global-header__close-menu {
+		display: none;
+	}
+
+	& .wp-block-navigation__responsive-container-close {
+		position: fixed;
+		right: 0;
+		top: var(--wp-admin--admin-bar--height, 0);
+		padding-top: 18px; /* Magic numbers to center the 24px icon in 60px height. */
+		padding-right: calc(var(--wp--style--block-gap) + var(--wp--custom--alignment--scroll-bar-width));
+		padding-bottom: 28px; /* Magic numbers to center the 24px icon in 60px height. */
+		padding-left: var(--wp--style--block-gap);
+		background-color: var(--wp--preset--color--darker-grey);
+	}
+}
+
+@media (--short-screen) {
+	.wp-block-group.global-header {
+		& > * {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		& > nav {
+			padding-bottom: 0;
+		}
+	}
+}
+
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+  background-color: inherit;
+  color: inherit;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  left: -1px;
+  top: 100%;
+}
+
+.wp-block-navigation .has-child:hover > .wp-block-navigation__submenu-container {
+	visibility: visible;
+	overflow: visible;
+	opacity: 1;
+	width: auto;
+	height: auto;
+	min-width: 200px;
+  }

@@ -1,0 +1,5 @@
+# Production-only files
+README-svn.txt
+build
+**/node_modules
+**/vendor

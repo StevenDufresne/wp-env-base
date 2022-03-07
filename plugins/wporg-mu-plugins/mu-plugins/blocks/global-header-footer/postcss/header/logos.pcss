@@ -1,0 +1,100 @@
+.wp-block-group.global-header {
+	& .wp-block-image {
+		margin-bottom: 0;
+	}
+
+	& .global-header__wporg-logo-full svg,
+	& .global-header__wporg-logo-mark svg {
+		height: 100%;
+		width: auto;
+	}
+
+	& .global-header__wporg-logo-full {
+		display: none;
+		padding: 0 calc(var(--wp--style--block-gap) / 2);
+
+		@media (--desktop-wide) {
+			display: inline;
+		}
+	}
+
+	& .wp-block-image.global-header__wporg-logo-mark {
+		flex-basis: 100%;
+		flex-shrink: 1;
+		text-align: left;
+		min-width: 73px;
+		padding: 0;
+		padding-left: calc(var(--wp--style--block-gap) / 2);
+
+		@media (--tablet) {
+			flex-basis: auto;
+			flex-shrink: 0;
+		}
+
+		@media (--desktop-wide) {
+			display: none;
+		}
+	}
+
+	& .wp-block-image > a {
+		display: inline-flex;
+		box-sizing: content-box;
+		height: 27px;
+		padding: 16px calc(var(--wp--style--block-gap) / 2);
+		color: var(--wp--preset--color--white);
+
+		@media (--tablet) {
+			padding-top: 31px;
+			padding-bottom: 32px;
+		}
+
+		@media (--short-screen) {
+			padding-bottom: 16px;
+			padding-top: 16px;
+		}
+	}
+
+	&.global-header__has-locale-title .global-header__wporg-logo-mark {
+		flex-basis: auto;
+		flex-shrink: unset;
+	}
+
+	& .global-header__wporg-locale-title {
+		--wp--preset--font-size--large: 20px; /* Ensure this is set to the correct size. */
+		padding-left: 0;
+		padding-bottom: 16px;
+		padding-top: 16px;
+		flex-basis: max-content;
+		flex-grow: 1;
+		flex-shrink: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-family: var(--wp--preset--font-family--eb-garamond);
+		font-size: var(--wp--preset--font-size--large);
+		font-weight: 400;
+		line-height: 1.35;
+
+		& span {
+			border-left: 1px solid;
+			padding-left: var(--wp--style--block-gap);
+		}
+
+		@media (--tablet) {
+			max-width: 15em;
+			flex-basis: min-content;
+			flex-shrink: 0;
+			padding-top: 31px;
+			padding-bottom: 32px;
+		}
+
+		@media (--short-screen) {
+			padding-bottom: 16px;
+			padding-top: 16px;
+		}
+
+		@media (--desktop-wide) {
+			max-width: 20em;
+		}
+	}
+}

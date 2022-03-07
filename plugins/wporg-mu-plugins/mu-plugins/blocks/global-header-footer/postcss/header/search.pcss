@@ -1,0 +1,149 @@
+.wp-block-group.global-header .global-header__search {
+	order: 2;
+
+	@media (--tablet) {
+		order: unset;
+		border-right: none;
+		padding-bottom: 0;
+	}
+
+	& .wp-block-navigation__responsive-container {
+
+		@media (--tablet) {
+			overflow: visible;
+		}
+	}
+
+	& .wp-block-navigation__responsive-container-open,
+	& .wp-block-navigation__responsive-container-close {
+
+		@media (--tablet) {
+			padding-top: 33px;
+			padding-bottom: 33px;
+		}
+
+		@media (--short-screen) {
+			padding-bottom: 20px;
+			padding-top: 16px;
+			background-position: center;
+		}
+
+		&:focus {
+			outline: 1px dotted currentColor;
+		}
+	}
+
+	& .wp-block-navigation__responsive-container-open {
+		box-sizing: content-box;
+		width: 24px;
+		height: 24px;
+		background-image: url(../images/search.svg);
+		background-repeat: no-repeat;
+		background-position: top 20px left var(--wp--style--block-gap);
+
+		@media (--tablet) {
+			background-size: 17px 17px;
+			background-position: center;
+		}
+
+		&:hover {
+			background-color: var(--wp--preset--color--darker-grey);
+		}
+
+		& svg {
+			display: none;
+		}
+	}
+
+	& .wp-block-navigation__responsive-container-close {
+		right: calc(73px + var(--wp--custom--alignment--scroll-bar-width));
+		padding-right: var(--wp--style--block-gap);
+
+		@media (--tablet) {
+			position: absolute;
+			top: calc(var(--wp-global-header-height) * -1);
+			right: 0;
+		}
+	}
+
+	& .wp-block-search {
+		margin-top: 0;
+		width: 100%;
+
+		@media (--tablet) {
+			padding: 20px;
+		}
+
+		& .wp-block-search__inside-wrapper {
+			padding: 0;
+			border: none;
+			border-radius: 2px;
+			background-color: var(--wp--preset--color--white);
+			color: var(--wp--preset--color--black);
+			font-size: inherit;
+		}
+
+		& .wp-block-search__label {
+			display: block;
+			margin-bottom: 20px;
+			font-size: 21px;
+
+			@media (--tablet) {
+
+				/* See @mixin hide-accessibly in wporg-news-2021 */
+				border: 0;
+				clip: rect(1px, 1px, 1px, 1px);
+				clip-path: inset(50%);
+				height: 1px;
+				margin: -1px;
+				overflow: hidden;
+				padding: 0;
+				position: absolute;
+				width: 1px;
+				word-wrap: normal !important;
+			}
+		}
+
+		& .wp-block-search__input {
+			-webkit-appearance: none; /* Remove duplicate magnifying glass icon on Safari-mobile. */
+			padding: var(--wp--custom--form--padding);
+			box-shadow: none;
+
+			@media (--tablet) {
+				padding: calc(var(--wp--custom--form--padding) * 0.5) var(--wp--custom--form--padding);
+			}
+
+			&::placeholder {
+				color: #6a6a6a;
+				opacity: 1;
+			}
+
+			&:focus {
+				outline: revert;
+			}
+		}
+
+		& .wp-block-search__button {
+			padding: 8px 12px;
+			background-color: transparent;
+			color: var(--wp--preset--color--black);
+
+			& svg {
+				fill: currentColor;
+				height: 32px;
+				width: 32px;
+
+				@media (--tablet) {
+					min-height: 20px;
+					height: 20px;
+					min-width: 20px;
+					width: 20px;
+				}
+			}
+
+			&:focus {
+				outline: revert;
+			}
+		}
+	}
+}

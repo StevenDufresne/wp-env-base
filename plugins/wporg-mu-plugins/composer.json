@@ -1,0 +1,31 @@
+{
+	"name": "wporg/wporg-mu-plugins",
+	"description": "`mu-plugins` for the WordPress.org network",
+	"license": "GPL-2.0-or-later",
+	"type": "wordpress-muplugin",
+	"extra": {
+		"sync-svn": {
+			"main-branch": "trunk",
+			"paths": {
+				"mu-plugins/": "https://dotorg.svn.wordpress.org/wordpress/website/wp-content/mu-plugins/pub-sync/"
+			}
+		}
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:WordPress/wporg-repo-tools.git"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	},
+	"require-dev": {
+		"wporg/wporg-repo-tools": "dev-trunk"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	}
+}

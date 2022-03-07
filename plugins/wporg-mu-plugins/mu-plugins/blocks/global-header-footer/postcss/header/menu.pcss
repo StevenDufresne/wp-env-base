@@ -1,0 +1,224 @@
+.wp-block-group.global-header .global-header__navigation {
+	order: 3;
+
+	@media (--tablet) {
+		flex-basis: 100%;
+		flex-shrink: 1;
+		order: unset;
+		padding-bottom: 0;
+		text-align: left;
+		overflow: clip;
+		height: var(--wp-global-header-height);
+
+		&.has-menu-loaded {
+			overflow: visible;
+		}
+	}
+
+	& .wp-block-navigation__responsive-container-open {
+		display: flex; /* Gutenberg has the button hardcoded to hide at 600px, but we need it to wait until `--tablet`. */
+
+		@media (--tablet) {
+			display: none;
+		}
+	}
+
+	& .wp-block-navigation__responsive-container {
+		&:not(.is-menu-open) {
+			display: none; /* Gutenberg has the menu hardcoded to open at 600px, but we need it to wait until `--tablet`. */
+
+			@media (--tablet) {
+				display: flex;
+			}
+		}
+
+		&.is-menu-open {
+			padding: 0;
+
+			& .wp-block-navigation__container {
+				line-height: 1;
+				width: 100%;
+			}
+
+			& .wp-block-navigation__submenu-icon {
+				display: none;
+			}
+
+			& .wp-block-navigation__responsive-container-content {
+				padding-top: 2em;
+			}
+		}
+	}
+
+	& .wp-block-navigation__container {
+		padding: 0 0 var(--wp--custom--margin--vertical) 0;
+		row-gap: 0;
+		column-gap: 0;
+		line-height: 24px;
+
+		@media (--tablet) {
+			padding-bottom: 0;
+		}
+
+		& .wp-block-navigation-item {
+			&:hover,
+			&:focus-within {
+				background-color: var(--wp--preset--color--darker-grey);
+			}
+
+			&.current-menu-item > a {
+				border-left: var(--active-menu-item-border-height) solid #7b90ff;
+				color: #7b90ff;
+				font-weight: 700;
+
+				@media (--tablet) {
+					border-bottom: var(--active-menu-item-border-height) solid #7b90ff;
+					border-left: none;
+					padding-bottom: calc(33px - var(--active-menu-item-border-height, 0px));
+				}
+
+				@media (--short-screen) {
+					padding-bottom: calc(18px - var(--active-menu-item-border-height, 0px));
+				}
+			}
+
+			&.has-child {
+				padding-bottom: 0;
+			}
+
+			& ul .current-menu-item a {
+				border-left: none;
+				border-bottom: none;
+			}
+		}
+
+		& .wp-block-navigation-item a {
+			padding-left: var(--wp--style--block-gap);
+			padding-top: calc(var(--wp--style--block-gap) / 2);
+			padding-bottom: calc(var(--wp--style--block-gap) / 2);
+
+			&:hover,
+			&:focus-within {
+				background-color: var(--wp--preset--color--darker-grey);
+			}
+
+			@media (--tablet) {
+				padding-bottom: 33px;
+				padding-top: 33px;
+				padding-left: calc(var(--wp--style--block-gap) / 2);
+				padding-right: calc(var(--wp--style--block-gap) / 2);
+			}
+
+			@media (--short-screen) {
+				padding-bottom: 18px;
+				padding-top: 18px;
+			}
+		}
+	}
+
+	& .wp-block-navigation__container .wp-block-navigation__submenu-container {
+		font-size: 15px;
+		gap: 0.5em;
+		padding-top: calc(var(--wp--style--block-gap) / 2);
+		padding-bottom: calc(var(--wp--style--block-gap) / 2);
+		border: none;
+
+		@media (--tablet) {
+			font-size: inherit;
+			gap: inherit;
+			padding-top: 0;
+			padding-bottom: 0;
+
+			& a:hover,
+			& a:focus {
+				text-decoration: underline;
+			}
+		}
+
+		& .wp-block-navigation-item a {
+			padding: calc(var(--wp--style--block-gap) / 4);
+
+			@media (--tablet) {
+				padding: calc(var(--wp--style--block-gap) / 2) var(--wp--style--block-gap);
+			}
+		}
+	}
+
+	& .wp-block-navigation__container .wp-block-navigation-item.global-header__overflow-menu {
+
+		@media (--tablet) {
+
+			/* Add extra space around the overflow … to make a bigger tap/hover target. */
+			& a {
+				padding-left: var(--wp--style--block-gap);
+				padding-right: var(--wp--style--block-gap);
+			}
+		}
+
+		& .global-header__overflow-item {
+			display: inherit;
+		}
+
+		& .global-header__get-wordpress {
+			display: none;
+		}
+
+		& > ul {
+			padding-left: 0;
+
+			& li a {
+				padding-left: var(--wp--style--block-gap);
+			}
+		}
+	}
+
+	& .global-header__overflow-item {
+		display: none;
+	}
+
+	& .wp-block-navigation-item {
+		padding-bottom: 0;
+	}
+
+	& .wp-block-navigation__submenu-icon svg {
+		fill: none;
+		stroke: currentColor;
+	}
+}
+
+.global-header {
+	& .global-header__search {
+		position: relative;
+	}
+
+	& .wp-block-navigation__responsive-container.is-menu-open {
+		top: calc(var(--wp-global-header-height, 0px) + var(--wp-admin--admin-bar--height, 0px));
+
+		@media (--tablet) {
+			position: absolute;
+			top: 100%;
+			left: auto;
+			right: 0;
+			bottom: auto;
+			width: 300px;
+			padding: 0;
+
+			& .wp-block-navigation__responsive-container-content {
+				padding-top: 0;
+			}
+		}
+
+		&:not(.has-background) {
+			background: var(--wp--preset--color--darker-grey);
+		}
+	}
+}
+
+/* Gutenberg bug: Close button is not visible in Safari; override it locally */
+.global-header__navigation .is-menu-open {
+	overflow: visible;
+
+	& > div {
+		overflow: scroll;
+	}
+}

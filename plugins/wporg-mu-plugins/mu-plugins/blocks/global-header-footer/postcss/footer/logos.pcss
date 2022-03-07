@@ -1,0 +1,109 @@
+.wp-block-group.global-footer [class*="wp-container-"].global-footer__logos-container {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 60px;
+
+	@media (--tablet) {
+		justify-content: space-between;
+		flex-wrap: nowrap;
+	}
+
+	& .global-footer__wporg-logo-full,
+	& .global-footer__wporg-logo-mark {
+		& a {
+			color: var(--wp--preset--color--white);
+		}
+
+		& svg {
+			height: 27px;
+			width: auto;
+		}
+	}
+
+	& > :first-child {
+		flex-grow: 1;
+		gap: var(--wp--style--block-gap);
+	}
+
+	& .wp-block-image {
+		text-align: left;
+		margin: 0;
+
+		& a {
+			display: block;
+			line-height: 1;
+		}
+	}
+
+	& .global-footer__wporg-logo-mark {
+
+		@media (--tablet) {
+			display: none;
+		}
+	}
+
+	& .global-footer__wporg-logo-full {
+		display: none;
+
+		@media (--tablet) {
+			display: inline;
+			margin-bottom: 0;
+		}
+	}
+
+	& .global-footer__wporg-locale-title {
+		font-size: 16px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		@media (--tablet) {
+			font-size: 13px;
+			max-width: 8em;
+		}
+
+		@media (--desktop) {
+			max-width: 15em;
+		}
+
+		@media (--desktop-wide) {
+			max-width: 20em;
+		}
+
+		& a {
+			color: inherit;
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	& .wp-block-image.global-footer__code_is_poetry {
+		flex-basis: 100%;
+		margin-top: 9px;
+		margin-bottom: 0;
+
+		@media (--tablet) {
+			flex-basis: unset;
+
+			& img {
+				position: absolute;
+				width: 188px;
+				height: 13px;
+				left: calc(50% - (188px / 2)); /* Align horizontally. Width must match width of the image. */
+
+				/*
+				 * Align vertically with W logo and social links.
+				 * This is intentionally not the exact center, since that wouldn't appear perfectly aligned to
+				 * the human eye. It needs to be a little off-center to appear centered.
+				 * Must match the height of the image.
+				 */
+				top: calc(13px / 1.5);
+			}
+		}
+	}
+}
