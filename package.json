@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wordpress/env": "^4.2.2"
+    "@wordpress/env": "^4.9.0"
   }
 }
